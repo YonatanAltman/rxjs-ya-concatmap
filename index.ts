@@ -22,3 +22,4 @@ source.pipe(concatMap(postRequest => (postRequest)))
 
 const source2 = of(['message1', 'message2']);
 source2.pipe(concatMap(res => (res))).subscribe(msg => console.log(msg));
+

@@ -11,12 +11,12 @@ const obs1 = new Observable(observer => {
 });
 const obs2 = new Observable(observer => {
   observer.next('NEXT2');
-  observer.error(err => console.log(err));
+  observer.error(err => console.log(err)); 
   
 });
 const source = from([obs1, obs2]);
-source.pipe(concatMap(postRequest => (postRequest)))
-.subscribe(msg => console.log(msg));
+source.pipe(concatMap(postRequest => of(postRequest)))
+.subscribe(msg => msg.subscribe(res => console.log(res)));
 
  
 
